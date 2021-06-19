@@ -1,8 +1,9 @@
 ---
-layout: post
-title: "My first open source contribution to SerenityOS"
-date:   2021-06-20 23:56:22 +0530
-categories: OSS SerenityOS
+title: My first open source contribution to OSS
+author: Sreelakshmi Jayarajan
+date: 2021-06-20 20:55:00 +0800
+categories: [OSS, SerenityOS]
+tags: [getting started]
 ---
 
 How can I contribute to open source software? Can I contribute with no prior development experience? Is it meant for beginners? If yes, is it very hard? These are some common questions many students find asking themselves. Well, I did, too. Hence I decided to share my experience contributing to SerenityOS [SerenityOS] — a graphical, Unix-like operating system for x86 computers — to help others contribute to Serenity or any large open source project.
