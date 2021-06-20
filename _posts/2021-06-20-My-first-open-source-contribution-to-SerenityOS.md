@@ -19,7 +19,7 @@ The first and foremost thing I did was completely move from Windows to Ubuntu as
 
 Many open source projects have beginner-friendly issues labelled “good-first-issue” or something similar. So I went to SerenityOS’ issue tracker on GitHub and went through all the  good first issues hoping to find something easy yet interesting. I found [one] called “GML Playground: Hovering over the auto-completion window makes it disappear” and decided to go with it. So the autocomplete suggestions window in the GML Playground disappears when a user hovers over it, and I needed to fix that.
 
-What was interesting about it? I found the same bug in SerenityOS’ HackStudio IDE and moreover I saw Andreas facing it in [one of his Youtube video].
+What was interesting about it? I found the same bug in SerenityOS’ HackStudio IDE and moreover I saw Andreas facing it in [one of his Youtube videos].
 
 But finding your first issue may be difficult; there are usually only a few good first issues, and there’s a good chance that they've already been taken up by someone else. However, one of the best parts of contributing to an open source project is that you can suggest your own ideas and/or find bugs after playing with different things in the project, i.e., you can open your own good first issues!
 
@@ -49,7 +49,7 @@ I went through the contribution guidelines of SerenityOS, committed my changes a
 
 I’m really really happy that my first ever git commit was to SerenityOS! If you’re interested in contributing to SerenityOS but consider yourself a beginner, I would suggest you to not worry about your C++ development experience and just get started as soon as possible! Find and pick a good first issue, or try out different things (there are lots of fun Userland applications in SerenityOS!) and open your bug/enhancement issues. Don’t get overwhelmed by looking at the size of the project — you only need to understand a tiny part of the codebase first, then go up from there. You can always ask for help if you get stuck or need suggestions but make sure to do your best first. Make sure the questions are to the point and mention everything you’ve already tried so that they can help you better. Most importantly, **never give up cuz great things take time!!!**
 
-Lastly, I would like to thank [Alimpfard], [Gunnar Beutner] and [Anand Baburajan] for their help, FOSS United’s [First Commit group] for their suggestions and Andreas Kling for creating Serenity and giving us an opportunity to be part of it.
+Lastly, I would like to thank [Ali Mohammad Pur], [Gunnar Beutner] and [Anand Baburajan] for their help, FOSS United’s [First Commit group] for their suggestions and Andreas Kling for creating Serenity and giving us an opportunity to be part of it.
 
 Looking forward to learning and contributing more to SerenityOS!
 
@@ -58,9 +58,9 @@ Thank you for reading! :^)
 [SerenityOS]: http://serenityos.org/
 [one]: https://github.com/SerenityOS/serenity/issues/7165
 [Andreas Kling]: https://awesomekling.github.io/about/
-[one of his Youtube video]: https://youtu.be/O3MtPgTUOC8?t=1373
+[one of his Youtube videos]: https://youtu.be/O3MtPgTUOC8?t=1373
 [PR]: https://github.com/SerenityOS/serenity/pull/7992
-[Alimpfard]: https://github.com/alimpfard
+[Ali Mohammad Pur]: https://github.com/alimpfard
 [Gunnar Beutner]: https://github.com/gunnarbeutner
 [Anand Baburajan]: https://github.com/anandbaburajan
 [First Commit group]: https://fossunited.org/first-commit
