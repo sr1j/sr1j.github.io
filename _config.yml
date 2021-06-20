@@ -17,7 +17,7 @@ timezone: Asia/Kolkata
 # --------------------------
 title: Sreelakshmi Jayarajan                          # the main title
 
-tagline:  "   "  # it will display as the sub-title
+tagline:    # it will display as the sub-title
 
 description:                         # used by seo meta and the atom fee
 
@@ -28,16 +28,16 @@ github:
   username: sr1j            # change to your github username
 
 twitter: 
-  username: Sreelakshmi_PJ          # change to your twitter username
+  username: SreelakshmiPJa1            # change to your twitter username
 
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: Sreelakshmi Jayarajan
+  name: Sreelakshmi P Jayarajan
   email: sreelakshmipj555@gmail.com             # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/Sreelakshmi_PJ      # change to your twitter homepage
+    - https://twitter.com/SreelakshmiPJa1      # change to your twitter homepage
     - https://github.com/sr1j              # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
@@ -64,7 +64,7 @@ google_analytics:
 #     light  - Use the light color scheme
 #     dark   - Use the dark color scheme
 #
-theme_mode:    [dark]
+theme_mode:   # [light|dark]
 
 # The CDN endpoint for images.
 # Notice that once it is assigned, the CDN url
@@ -129,6 +129,11 @@ defaults:
       layout: page
       permalink: /:title/
       dynamic_title: true    # Hide title in mobile screens.
+  -
+    scope:
+      path: "assets/img"
+    values:
+      image: true
 
 sass:
   style: compressed
