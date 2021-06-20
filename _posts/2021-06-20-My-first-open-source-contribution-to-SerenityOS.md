@@ -1,184 +1,70 @@
 ---
 layout: post
-title: Getting Started
-author: Cotes Chung
+title: My first open source contribution to SerenityOS
+author: Sreelakshmi Jayarajan
 date: 2019-08-09 20:55:00 +0800
-categories: [Blogging, Tutorial]
+categories: [OSS, SerenityOS]
 tags: [getting started]
 ---
 
-## Prerequisites
+How can I contribute to open source software? Can I contribute with no prior development experience? Is it meant for beginners? If yes, is it very hard? These are some common questions many students find asking themselves. Well, I did, too. Hence I decided to share my experience contributing to SerenityOS [SerenityOS] — a graphical, Unix-like operating system for x86 computers — to help others contribute to Serenity or any large open source project.
 
-Follow the [Jekyll Docs](https://jekyllrb.com/docs/installation/) to complete the installation of `Ruby`, `RubyGems`, `Jekyll` and `Bundler`.
+Here’s a little bit about me. I’m Sreelakshmi, a first year undergraduate student from Kerala, India. I came to know about SerenityOS through my friend and what I found really exciting about it was the fact that it was built from the ground up! Moreover, the topic of operating systems and their functions intrigued me, so I decided to contribute there. I’m familiar with the basics of C++ from high school which was helpful since the codebase of SerenityOS is in C++. But I had no prior experience in C++ development.
 
-## Installation
+SerenityOS actually started as a hobby project by [Andreas Kling], and as of June 2021, over 400 people have contributed to it and around 3,000 people are part of the SerenityOS Discord server! I’m really happy to be part of such an amazing community! 
 
-There are two ways to get the theme:
+## Getting started
 
-- **Install from RubyGems** - Easy to update, isolate irrelevant project files so you can focus on writing.
-- **Fork on GitHub** - Convenient for custom development, but difficult to update, only suitable for web developers.
+The first and foremost thing I did was completely move from Windows to Ubuntu as Linux distributions are much better for programmers. I was also new to Git and GitHub, so I learned the basic concepts and commands on the go. I began the contributing process by forking and cloning the repository. The next challenge was building SerenityOS. I struggled with this part for a few days because of various reasons including running incorrect commands and getting confused between the build instructions for different systems. I eventually asked for some help at their Discord, and they suggested a different command for me to try after which I was able to build and run it successfully! The next challenge was finding an issue to work on.
 
-### Installing the Theme Gem
+## How I chose an issue and what was interesting about it
 
-Add this line to your Jekyll site's `Gemfile`:
+Many open source projects have beginner-friendly issues labelled “good-first-issue” or something similar. So I went to SerenityOS’ issue tracker on GitHub and went through all the  good first issues hoping to find something easy yet interesting. I found one called “GML Playground: Hovering over the auto-completion window makes it disappear” [Issue] and decided to go with it. So the autocomplete suggestions window in the GML Playground disappears when a user hovers over it, and I needed to fix that.
 
-```ruby
-gem "jekyll-theme-chirpy"
-```
+What was interesting about it? I found the same bug in SerenityOS’ HackStudio IDE and moreover I saw Andreas facing it in one his [Youtube Video].
 
-And add this line to your Jekyll site's `_config.yml`:
+But finding your first issue may be difficult; there are usually only a few good first issues, and there’s a good chance that they've already been taken up by someone else. However, one of the best parts of contributing to an open source project is that you can suggest your own ideas and/or find bugs after playing with different things in the project, i.e., you can open your own good first issues!
 
-```yaml
-theme: jekyll-theme-chirpy
-```
+## Finding solutions
 
-And then execute:
+I tried to find the associated files and got to `LibGUI/Window` and `WindowServer/WindowManager` because the auto-completion window is a window. I went through the code in those files, used debug statements and played with some functions such as `hide()`, `show()`, `move_to_front_and_make_active()`, `process_mouse_event()`, etc.
 
-```console
-$ bundle
-```
+Later on I found out that the auto-completion window was being closed inside the `leave_event()` of the `LibGUI/TextEditor`. So I tried adding some conditions prior closing it to check whether the last mouse pointer position was inside the auto-completion window’s `rect()` (using coordinates and dimensions of the auto-completion window) and only close it if it doesn't have the mouse pointer inside it. Unfortunately that didn’t work out because the `rect()` wasn’t behaving as I expected it to - the coordinates of the rectangle seemed to be a bit mispositioned.
 
-Finally, copy the required files from the theme's gem (for detailed files, see [starter project][starter]) to your Jekyll site.
+I also tried out approaches like closing the auto-completion window only when the last mouse pointer position was not in the `rect()` of its parent widget (TextEditor). To do that, I played with all the `rect()` functions in `LibGUI/Widget` but none of them gave me the results I was looking for.
 
-> **Hint**: To locate the installed theme’s gem, execute:
->
-> ```console
-> $ bundle info --path jekyll-theme-chirpy
-> ```
+After a week, I finally decided to ask for some help at Discord. I put a text explaining all the solutions I tried and asked if they had any hints or suggestions. One of them suggested I just `show()` the auto-completion window itself when it gets a mouse enter event, but wasn't able to implement it successfully because of the aforementioned `rect()` issue.
 
-Or you can [**use the starter template**][use-starter] to create a Jekyll site to save time copying files from the theme's gem. We have prepared everything for you there!
+On the issue, I also received a suggestion to only close the auto-completion window when the user completely switches to another window. But this solution doesn’t close the auto-completion window when the mouse pointer leaves the GML Playground window (which is what should ideally happen).
 
-### Fork on GitHub
+It took me about 2+ weeks to try all these approaches so I felt a bit sad and exhausted at times, but I also didn't feel like giving up. My friends suggested I take a break, so I kept the issue aside for a while.
 
-[Fork **Chirpy**](https://github.com/cotes2020/jekyll-theme-chirpy/fork) on GitHub and then clone your fork to local. (Please note that the default branch code is in development.  If you want the blog to be stable, please switch to the [latest tag](https://github.com/cotes2020/jekyll-theme-chirpy/tags) and start writing.)
+## My first pull request to SerenityOS
 
-Install gem dependencies by:
+After 3-4 days, I got back into it with a fresh mind and was able to find a function in `WindowServer/Window` which lets you iterate through all the child windows of a parent. I then went to the `set_active_window()` inside `WindowServer/WindowManager` and wrote some code to close all the child windows of WindowType `Tooltip` (which is the type of the auto-completion window) of the previously active window. Afterwards, I removed the code responsible for closing the window in `TextEditor`’s `leave_event()`, and it worked!
 
-```console
-$ bundle
-```
+I went through the contribution guidelines of SerenityOS, committed my changes and opened a [PR]. A reviewer pointed out some of the mistakes with my commit messages so I had to squash commits after updating their description. The git commands were frustrating sometimes, but with the help of my friend, I managed to make the necessary changes. After all the CI checks passed, my PR was finally merged! 
 
-And then execute:
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">WindowManager: Close tooltip child_windows of previously active window<br><br>This closes the autocomplete_box used in applications like GML<br>Playground and HackStudio when the user switches focus to a new window.<br>Author: Sreelakshmi<a href="https://t.co/uCkOTtAGbb">https://t.co/uCkOTtAGbb</a></p>&mdash; SerenityOS Commits 🐞 (@OsCommits) <a href="https://twitter.com/OsCommits/status/1403795357209923590?ref_src=twsrc%5Etfw">June 12, 2021</a></blockquote> 
+ 
+ 
+## Final thoughts
 
-```console
-$ bash tools/init.sh
-```
+I’m really really happy that my first ever git commit was to SerenityOS! If you’re interested in contributing to SerenityOS but consider yourself a beginner, I would suggest you to not worry about your C++ development experience and just get started as soon as possible! Find and pick a good first issue, or try out different things (there are lots of fun Userland applications in SerenityOS!) and open your bug/enhancement issues. Don’t get overwhelmed by looking at the size of the project — you only need to understand a tiny part of the codebase first, then go up from there. You can always ask for help if you get stuck or need suggestions but make sure to do your best first. Make sure the questions are to the point and mention everything you’ve already tried so that they can help you better. Most importantly, **never give up cuz great things take time!!!**
 
-> **Note**: If you don't plan to deploy your site on GitHub Pages, append parameter option `--no-gh` at the end of the above command.
+Lastly, I would like to thank [Alimpfard], [Gunnar Beutner] and [Anand Baburajan] for their help, FOSS United’s [First Commit group] for their suggestions and Andreas Kling for creating Serenity and giving us an opportunity to be part of it.
 
-What it does is:
+Looking forward to learning and contributing more to SerenityOS!
 
-1. Remove some files or directories from your repository:
-    - `.travis.yml`
-    - files under `_posts`
-    - folder `docs`
+**Thank you for reading! :^)**
 
-2. If you use the `--no-gh` option, the directory `.github` will be deleted. Otherwise, setup the GitHub Action workflow by removing the extension `.hook` of `.github/workflows/pages-deploy.yml.hook`, and then remove the other files and directories in the folder `.github`.
-
-3. Automatically create a commit to save the changes.
-
-## Usage
-
-### Configuration
-
-Update the variables of `_config.yml` as needed. Some of them are typical options:
-
-- `url`
-- `avatar`
-- `timezone`
-- `lang`
-
-### Running Local Server
-
-You may want to preview the site contents before publishing, so just run it by:
-
-```console
-$ bundle exec jekyll s
-```
-
-Or run the site on Docker with the following command:
-
-```terminal
-$ docker run -it --rm \
-    --volume="$PWD:/srv/jekyll" \
-    -p 4000:4000 jekyll/jekyll \
-    jekyll serve
-```
-
-Open a browser and visit to _<http://localhost:4000>_.
-
-### Deployment
-
-Before the deployment begins, checkout the file `_config.yml` and make sure the `url` is configured correctly. Furthermore, if you prefer the [**project site**](https://help.github.com/en/github/working-with-github-pages/about-github-pages#types-of-github-pages-sites) and don't use a custom domain, or you want to visit your website with a base URL on a web server other than **GitHub Pages**, remember to change the `baseurl` to your project name that starting with a slash, e.g, `/project-name`.
-
-Now you can choose ONE of the following methods to deploy your Jekyll site.
-
-#### Deploy on GitHub Pages
-
-For security reasons, GitHub Pages build runs on `safe` mode, which restricts us from using plugins to generate additional page files. Therefore, we can use **GitHub Actions** to build the site, store the built site files on a new branch, and use that branch as the source of the GH Pages service.
-
-Quickly check the files needed for GitHub Actions build:
-
-- Ensure your Jekyll site has the file `.github/workflows/pages-deploy.yml`. Otherwise, create a new one and fill in the contents of the [workflow file][workflow], and the value of the `on.push.branches` should be the same as your repo's default branch name.
-- Ensure your Jekyll site has file `tools/test.sh` and `tools/deploy.sh`. Otherwise, copy them from this repo to your Jekyll site.
-
-And then rename your repository to `<GH-USERNAME>.github.io` on GitHub.
-
-Now publish your Jekyll site by:
-
-1. Push any commit to remote to trigger the GitHub Actions workflow. Once the build is complete and successful, a new remote branch named `gh-pages` will appear to store the built site files.
-
-2. Browse to your repo's landing page on GitHub and select the branch `gh-pages` as the [publishing source](https://docs.github.com/en/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site) through _Settings_ → _Options_ → _GitHub Pages_:
-
-    ![gh-pages-sources](https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images/posts/20190809/gh-pages-sources.png)
-
-3. Visit your website at the address indicated by GitHub.
-
-#### Deploy on Other Platforms
-
-On platforms other than GitHub, we cannot enjoy the convenience of **GitHub Actions**. Therefore, we should build the site locally (or on some other 3rd-party CI platform) and then put the site files on the server.
-
-Go to the root of the source project, build your site by:
-
-```console
-$ JEKYLL_ENV=production bundle exec jekyll b
-```
-
-Or build the site with Docker by:
-
-```terminal
-$ docker run -it --rm \
-    --env JEKYLL_ENV=production \
-    --volume="$PWD:/srv/jekyll" \
-    jekyll/jekyll \
-    jekyll build
-```
-
-Unless you specified the output path, the generated site files will be placed in folder `_site` of the project's root directory. Now you should upload those files to your web server.
-
-[starter]: https://github.com/cotes2020/chirpy-starter
-[use-starter]: https://github.com/cotes2020/chirpy-starter/generate
-[workflow]: https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/.github/workflows/pages-deploy.yml.hook
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+[SerenityOS]: http://serenityos.org/
+[Issue]: https://github.com/SerenityOS/serenity/issues/7165
+[Andreas Kling]: https://awesomekling.github.io/about/
+[Youtube Video]: https://youtu.be/O3MtPgTUOC8?t=1373
+[PR]: https://github.com/SerenityOS/serenity/pull/7992
+[Alimpfard]: https://github.com/alimpfard
+[Gunnar Beutner]: https://github.com/gunnarbeutner
+[Anand Baburajan]: https://github.com/anandbaburajan
+[First Commit group]: https://fossunited.org/first-commit
 
