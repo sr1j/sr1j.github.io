@@ -49,7 +49,7 @@ I went through the contribution guidelines of SerenityOS, committed my changes a
 
 I’m really really happy that my first ever git commit was to SerenityOS! If you’re interested in contributing to SerenityOS but consider yourself a beginner, I would suggest you to not worry about your C++ development experience and just get started as soon as possible! Find and pick a good first issue, or try out different things (there are lots of fun Userland applications in SerenityOS!) and open your bug/enhancement issues. Don’t get overwhelmed by looking at the size of the project — you only need to understand a tiny part of the codebase first, then go up from there. You can always ask for help if you get stuck or need suggestions but make sure to do your best first. Make sure the questions are to the point and mention everything you’ve already tried so that they can help you better. Most importantly, **never give up cuz great things take time!!!**
 
-Lastly, I would like to thank [Ali Mohammad Pur], [Gunnar Beutner] and [Anand Baburajan] for their help, FOSS United’s [First Commit group] for their suggestions and Andreas Kling for creating Serenity and giving us an opportunity to be part of it.
+Lastly, I would like to thank  [Ali Mohammad Pur], [Gunnar Beutner] and [Anand Baburajan] for their help, FOSS United’s [First Commit group] for their suggestions and Andreas Kling for creating Serenity and giving us an opportunity to be part of it.
 
 Looking forward to learning and contributing more to SerenityOS!
 
