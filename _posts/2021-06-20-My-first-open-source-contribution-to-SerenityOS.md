@@ -1,5 +1,5 @@
 ---
-title: My first open sorce contribution to OSS
+title: My first open sorce contribution to SerenityOS"
 author: Sreelakshmi Jayarajan
 date: 2021-06-20 20:55:00 +0800
 categories: [OSS, SerenityOS]
