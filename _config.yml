@@ -17,7 +17,7 @@ timezone: Asia/Kolkata
 # --------------------------
 title: Sreelakshmi Jayarajan                          # the main title
 
-tagline:    # it will display as the sub-title
+tagline: "  "   # it will display as the sub-title
 
 description:                         # used by seo meta and the atom fee
 
@@ -28,7 +28,7 @@ github:
   username: sr1j            # change to your github username
 
 twitter: 
-  username: SreelakshmiPJa1            # change to your twitter username
+  username: Sreelakshmi_PJ           # change to your twitter username
 
 social:
   # Change to your full name.
@@ -37,7 +37,7 @@ social:
   email: sreelakshmipj555@gmail.com             # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/SreelakshmiPJa1      # change to your twitter homepage
+    - https://twitter.com/Sreelakshmi_PJ      # change to your twitter homepage
     - https://github.com/sr1j              # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
