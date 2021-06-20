@@ -17,7 +17,7 @@ timezone: Asia/Kolkata
 # --------------------------
 title: Sreelakshmi Jayarajan                          # the main title
 
-tagline:  abc  # it will display as the sub-title
+tagline:  "abc"  # it will display as the sub-title
 
 description:                         # used by seo meta and the atom fee
 
@@ -33,7 +33,7 @@ twitter:
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: Sreelakshmi P Jayarajan
+  name: Sreelakshmi Jayarajan
   email: sreelakshmipj555@gmail.com             # change to your email address
   links:
     # The first element serves as the copyright owner's link
